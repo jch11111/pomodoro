@@ -1,10 +1,10 @@
 var pomodoro = (function () {
 
-    var remainingPomodoroSeconds;
+    var remainingSeconds;
 
     function displayPomodoroRemainingTime() {
-        var minutes = Math.floor(remainingPomodoroSeconds / 60),
-            seconds = remainingPomodoroSeconds % 60,
+        var minutes = Math.floor(remainingSeconds / 60),
+            seconds = remainingSeconds % 60,
             formattedMinutes = ("0" + minutes.toString()).substr(-2),
             formattedSeconds = ("0" + seconds.toString()).substr(-2);
 
@@ -19,23 +19,41 @@ var pomodoro = (function () {
     };
 
     function handleStartTimerClick() {
-        var remainingPomodoroMinutes = $('#pomodoroMinutes').val();
+        var pomodoroMinutes = $('#pomodoroMinutes').val(),
+            breakMinutes = $('#breakMinutes').val();
 
-        remainingPomodoroSeconds = (isNaN(remainingPomodoroMinutes) ? 0 : remainingPomodoroMinutes) * 60;
+        remainingSeconds = (isNaN(pomodoroMinutes) ? 0 : pomodoroMinutes) * 1;
 
-        setTimeout(function () {
-            runTimer();
-        }, 1000);
+        $.when(runTimer())
+        .then(function () {
+            remainingSeconds = (isNaN(breakMinutes) ? 0 : breakMinutes) * 1;
+            return runTimer();
+        })
+        .then(function () {
+            alert('done');
+        });
     }
 
     function runTimer() {
-        displayPomodoroRemainingTime();
-        remainingPomodoroSeconds--;
-        if (remainingPomodoroSeconds >= 0) {
-            setTimeout(function () {
-                runTimer();
-            }, 1000);
+        var deferred = $.Deferred();
+
+        setTimeout(function () {
+            timer();
+        }, 1000);
+
+        function timer() {
+            displayPomodoroRemainingTime();
+            remainingSeconds--;
+            if (remainingSeconds >= 0) {
+                setTimeout(function () {
+                    timer();
+                }, 1000);
+            } else {
+                deferred.resolve();
+            }
         }
+
+        return deferred.promise();
     }
 
     function setEventHandlers() {

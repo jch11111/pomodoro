@@ -18,10 +18,10 @@
         <div class="row fullHeight">
             <div class="twelve columns fullHeight" >
                 <div id="pomodoro">
-                    <div><input type="text" id="pomodoroMinutes" placeholder="Pomodoro Minutes" /></div>
-                    <div><input type="text" id="breakMinutes" placeholder="Break Minutes" /></div>
+                    <div><input type="number" min="1" max="60" id="pomodoroMinutes" /></div>
+                    <div><input type="number" min="1" max="60" id="breakMinutes" /></div>
                     <div><a href="#" id="startTimer">Start Timer</a></div>
-                    <div id="timeRemaining">i dunno</div>
+                    <div id="timeRemaining"></div>
                 </div>
             </div>
         </div>

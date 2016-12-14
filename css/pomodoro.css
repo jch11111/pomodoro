@@ -17,3 +17,7 @@ a:hover, a:focus, a:active, a:visited, a:link {
 #pomodoro {
     margin: 10px auto;
 }
+
+input {
+    width: 80px;
+}
