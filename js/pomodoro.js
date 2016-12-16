@@ -1,6 +1,9 @@
 var pomodoro = (function () {
 
-    var remainingSeconds;
+    var remainingSeconds,
+        stopTimer,
+        timerHandle,
+        secondsInOneMinute = 1;
 
     function displayPomodoroRemainingTime() {
         var minutes = Math.floor(remainingSeconds / 60),
@@ -19,25 +22,35 @@ var pomodoro = (function () {
     };
 
     function handleStartTimerClick() {
+        runPomodoroAndBreakTimers();
+    }
+
+    function runPomodoroAndBreakTimers() {
         var pomodoroMinutes = $('#pomodoroMinutes').val(),
             breakMinutes = $('#breakMinutes').val();
 
-        remainingSeconds = (isNaN(pomodoroMinutes) ? 0 : pomodoroMinutes) * 1;
+        $('#timeRemaining').css('background-color', '#FFF');
+
+        remainingSeconds = (isNaN(pomodoroMinutes) ? 0 : pomodoroMinutes) * secondsInOneMinute;
+
+        if (timerHandle) {
+            clearTimeout(timerHandle);
+        }
 
         $.when(runTimer())
         .then(function () {
-            remainingSeconds = (isNaN(breakMinutes) ? 0 : breakMinutes) * 1;
+            remainingSeconds = (isNaN(breakMinutes) ? 0 : breakMinutes) * secondsInOneMinute;
             return runTimer();
         })
         .then(function () {
-            alert('done');
+            $('#timeRemaining').css('background-color', '#F00');
         });
     }
 
     function runTimer() {
         var deferred = $.Deferred();
 
-        setTimeout(function () {
+        timerHandle = setTimeout(function () {
             timer();
         }, 1000);
 
@@ -45,7 +58,7 @@ var pomodoro = (function () {
             displayPomodoroRemainingTime();
             remainingSeconds--;
             if (remainingSeconds >= 0) {
-                setTimeout(function () {
+                timerHandle = setTimeout(function () {
                     timer();
                 }, 1000);
             } else {
@@ -53,7 +66,7 @@ var pomodoro = (function () {
             }
         }
 
-        return deferred.promise();
+        return deferred;
     }
 
     function setEventHandlers() {
