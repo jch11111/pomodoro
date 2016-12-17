@@ -29,7 +29,9 @@ var pomodoro = (function () {
         var pomodoroMinutes = $('#pomodoroMinutes').val(),
             breakMinutes = $('#breakMinutes').val();
 
-        $('#timeRemaining').css('background-color', '#FFF');
+        //$('#timeRemaining').css('background-color', '#F00');
+        $('#tomato img').attr('src', 'img/tomato.jpg');
+
 
         remainingSeconds = (isNaN(pomodoroMinutes) ? 0 : pomodoroMinutes) * secondsInOneMinute;
 
@@ -40,10 +42,13 @@ var pomodoro = (function () {
         $.when(runTimer())
         .then(function () {
             remainingSeconds = (isNaN(breakMinutes) ? 0 : breakMinutes) * secondsInOneMinute;
+            //$('#timeRemaining').css('background-color', '#0F0');
+            $('#tomato img').attr('src', 'img/green.jpg');
+            //$('#timeRemaining').css('color', 'red');
             return runTimer();
         })
         .then(function () {
-            $('#timeRemaining').css('background-color', '#F00');
+            //$('#timeRemaining').css('background-color', '#FFF');
         });
     }
 
@@ -70,7 +75,7 @@ var pomodoro = (function () {
     }
 
     function setEventHandlers() {
-        $('#startTimer').click(handleStartTimerClick);
+        $('img,#timeRemaining').click(handleStartTimerClick);
     }
 
     return {

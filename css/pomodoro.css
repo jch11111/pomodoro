@@ -21,3 +21,30 @@ a:hover, a:focus, a:active, a:visited, a:link {
 input {
     width: 80px;
 }
+
+#tomato {
+    width: 300px;
+    margin: 0 auto;
+    position: relative;
+}
+
+img {
+    width: 70%;
+    cursor: pointer;
+}
+
+#timeRemaining {
+    left: 0;
+    position:absolute;
+    text-align:center;
+    top: 70px;
+    width: 100%;
+    color: white;
+    font-family: 'Indie Flower', cursive;
+    font-size: 64px;
+    font-weight: 800;
+    cursor: pointer;
+    text-shadow: 2px 2px #888;
+    
+
+}
