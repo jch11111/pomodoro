@@ -3,7 +3,9 @@ var pomodoro = (function () {
     var remainingSeconds,
         stopTimer,
         timerHandle,
-        secondsInOneMinute = 1;
+        secondsInOneMinute = 1,
+        RED = true,
+        GREEN = false;
 
     function displayPomodoroRemainingTime() {
         var minutes = Math.floor(remainingSeconds / 60),
@@ -29,9 +31,7 @@ var pomodoro = (function () {
         var pomodoroMinutes = $('#pomodoroMinutes').val(),
             breakMinutes = $('#breakMinutes').val();
 
-        //$('#timeRemaining').css('background-color', '#F00');
-        $('#tomato img').attr('src', 'img/tomato.jpg');
-
+        setTomatoColor(RED);
 
         remainingSeconds = (isNaN(pomodoroMinutes) ? 0 : pomodoroMinutes) * secondsInOneMinute;
 
@@ -42,13 +42,11 @@ var pomodoro = (function () {
         $.when(runTimer())
         .then(function () {
             remainingSeconds = (isNaN(breakMinutes) ? 0 : breakMinutes) * secondsInOneMinute;
-            //$('#timeRemaining').css('background-color', '#0F0');
-            $('#tomato img').attr('src', 'img/green.jpg');
-            //$('#timeRemaining').css('color', 'red');
+            setTomatoColor(GREEN);
             return runTimer();
         })
         .then(function () {
-            //$('#timeRemaining').css('background-color', '#FFF');
+            flickerTomato(40);
         });
     }
 
@@ -76,6 +74,27 @@ var pomodoro = (function () {
 
     function setEventHandlers() {
         $('img,#timeRemaining').click(handleStartTimerClick);
+    }
+
+    function setTomatoColor(redOrGreen) {
+        var imageSrc = redOrGreen === RED ? 'img/tomato.jpg' : 'img/green.jpg';
+        $('img').attr('src', imageSrc);
+    }
+
+    function flickerTomato(numberOfFlicks) {
+        var color = GREEN,
+            workingFlicks = numberOfFlicks;
+
+        flick();
+
+        function flick() {
+            color = !color;
+            setTomatoColor(color);
+            if (workingFlicks) {
+                workingFlicks--;
+                setTimeout(flick, 75);
+            }
+        }
     }
 
     return {

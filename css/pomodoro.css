@@ -34,17 +34,20 @@ img {
 }
 
 #timeRemaining {
-    left: 0;
-    position:absolute;
+    position:relative; 
+    top: -120px;
+    height: 55px;
     text-align:center;
-    top: 70px;
-    width: 100%;
+    width: 45%;
+    margin: 0 auto;
     color: white;
-    font-family: 'Indie Flower', cursive;
-    font-size: 64px;
+    font-family: 'Gochi Hand', cursive;
+    font-size: 50px;
+    line-height: 60px;
     font-weight: 800;
     cursor: pointer;
-    text-shadow: 2px 2px #888;
-    
-
+    text-shadow: 2px 2px #444;
+    border: 1px solid black;
+    border-radius: 5%;
+    background-color: #3D2F3E;
 }

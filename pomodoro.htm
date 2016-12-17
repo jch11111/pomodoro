@@ -6,7 +6,9 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/skeleton.css">
     <link rel="stylesheet" href="css/pomodoro.css" />
-    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    <!--<link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">-->
+    <!--<link href="https://fonts.googleapis.com/css?family=Dekko" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Gochi+Hand" rel="stylesheet">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="js/progressbar.min.js"></script>
@@ -31,24 +33,11 @@
         <div class="row fullHeight">
             <div class="twelve columns fullHeight" >
                 <div id="pomodoro">
-                    <div><input type="number" min="1" max="60" id="pomodoroMinutes" /></div>
-                    <div><input type="number" min="1" max="60" id="breakMinutes" /></div>
+                    <div><input type="number" min="1" max="60" id="pomodoroMinutes" value="25"/></div>
+                    <div><input type="number" min="1" max="60" id="breakMinutes" value="5"/></div>
                     <div id="tomato">
                         <img src="img/tomato.jpg" />
                         <div id="timeRemaining"></div>
-                    </div>
- <!--
-                    <div id="tomato">
-                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet" viewBox="50.82224110261507 350.3775075494566 230.84112149532712 238.95695290321964">
-                            <defs>
-                                <path d="M281.66 486.63C281.66 543.32 229.95 589.33 166.24 589.33C102.54 589.33 50.82 543.32 50.82 486.63C50.82 429.95 102.54 383.93 166.24 383.93C229.95 383.93 281.66 429.95 281.66 486.63Z" id="HsIBmQ2cwm"></path>
-                                <path d="" id="Ho7bvBkx3M"></path>
-                                <path d="M166.3 350.38L167.31 372.6L169.33 381.69L181.45 386.74L197.61 389.77L211.75 396.84L223.87 415.02L213.77 408.96L201.65 404.92L190.54 401.89L181.45 404.92L173.37 415.02L169.33 429.17L165.29 419.06L159.23 408.96L145.08 405.93L120.84 414.01L98.62 425.12L102.66 410.98L117.81 396.84L143.06 385.73L158.22 378.66L157.21 350.38L166.3 350.38Z" id="Ws6XpHDE7k"></path>
-                            </defs>
-                            <g visibility="inherit"><g visibility="inherit"><g><use xlink:href="#HsIBmQ2cwm" opacity="1" fill-opacity="0" stroke="#2c153d" stroke-width="5" stroke-opacity="1"></use></g></g><g visibility="inherit"><g><use xlink:href="#Ho7bvBkx3M" opacity="1" fill-opacity="0" stroke="#2c153d" stroke-width="5" stroke-opacity="1"></use></g></g><g visibility="inherit"><use xlink:href="#Ws6XpHDE7k" opacity="1" fill="#211533" fill-opacity="1"></use><g><use xlink:href="#Ws6XpHDE7k" opacity="1" fill-opacity="0" stroke="#2c153d" stroke-width="5" stroke-opacity="1"></use></g></g></g>
-                        </svg>
-                    </div>
- -->
                     </div>
             </div>
         </div>
