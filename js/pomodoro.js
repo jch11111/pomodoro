@@ -43,6 +43,7 @@ var pomodoro = (function () {
         .then(function () {
             remainingSeconds = (isNaN(breakMinutes) ? 0 : breakMinutes) * secondsInOneMinute;
             setTomatoColor(GREEN);
+
             return runTimer();
         })
         .then(function () {
