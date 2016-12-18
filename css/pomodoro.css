@@ -5,6 +5,19 @@ html, body {
   font-size: 24px;
 }
 
+input {
+    width: 80px;
+}
+
+@media screen and (max-width: 374px) {
+    body {
+        font-size: 20px;
+    }
+    input {
+        width: 60px;
+    }   
+}
+
 div {
     text-align: center;
 }
@@ -15,17 +28,16 @@ a:hover, a:focus, a:active, a:visited, a:link {
 
 
 #pomodoro {
-    margin: 10px auto;
+    margin: 0 auto;
 }
 
-input {
-    width: 80px;
-}
+
 
 #tomato {
     width: 300px;
-    margin: 0 auto;
+    margin: 30px auto 0;
     position: relative;
+    height: 230px;
 }
 
 img {
@@ -57,15 +69,10 @@ body {
 }
 
 .signature {
-    font-size: 24px;
+    font-size: 20px;
     color: #BBB;
 }
 
-.timerLabel {
-    /*text-align: left;*/
-}
-
-.timeSetter {
-    margin: 0 auto;
-    text-align: center;
+.timerSettings {
+    height: 50px;
 }
