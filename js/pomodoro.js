@@ -1,9 +1,8 @@
 var pomodoro = (function () {
 
     var remainingSeconds,
-        stopTimer,
         timerHandle,
-        secondsInOneMinute = 1,
+        secondsInOneMinute,
         RED = true,
         GREEN = false;
 
@@ -20,6 +19,7 @@ var pomodoro = (function () {
     function init() {
         $(function () {
             setEventHandlers();
+            secondsInOneMinute = ('#sec' === location.hash) ? 1 : 60;
         })
     };
 
@@ -78,6 +78,7 @@ var pomodoro = (function () {
     }
 
     function setTomatoColor(redOrGreen) {
+        //var imageSrc = redOrGreen === RED ? 'http://curthill.net/pomodoro/img/tomato.jpg' : 'http://curthill.net/pomodoro/img/green.jpg';
         var imageSrc = redOrGreen === RED ? 'img/tomato.jpg' : 'img/green.jpg';
         $('img').attr('src', imageSrc);
     }
@@ -89,10 +90,8 @@ var pomodoro = (function () {
         flick();
 
         function flick() {
-            color = !color;
-            setTomatoColor(color);
-            if (workingFlicks) {
-                workingFlicks--;
+            setTomatoColor(color = !color);
+            if (workingFlicks--) {
                 setTimeout(flick, 75);
             }
         }
