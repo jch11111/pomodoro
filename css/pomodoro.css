@@ -1,7 +1,6 @@
 html, body { 
   margin:0; 
   padding:0; 
-  height:100%; 
   font-size: 24px;
 }
 
@@ -18,31 +17,17 @@ input {
     }   
 }
 
-div {
-    text-align: center;
+@media screen and (max-width: 383px) {
+    h5 {
+        font-size: 32px;
+    }  
 }
-
-a:hover, a:focus, a:active, a:visited, a:link {
-    text-decoration: none !important;
-}
-
-
-#pomodoro {
-    margin: 0 auto;
-}
-
-
 
 #tomato {
     width: 300px;
     margin: 30px auto 0;
     position: relative;
     height: 230px;
-}
-
-img {
-    width: 70%;
-    cursor: pointer;
 }
 
 #timeRemaining {
@@ -62,6 +47,57 @@ img {
     border: 1px solid black;
     border-radius: 10px;
     background-color: #3D2F3E;
+}
+
+@media screen and (max-width: 415px) {
+    h5 {
+        font-size: 32px;
+    } 
+    #tomato {
+        width: 250px;
+        height: 180px;
+    }
+    #timeRemaining {
+        position:relative; 
+        top: -105px;
+        height: 50px;
+        font-size: 40px;
+        line-height: 55px;
+        text-shadow: 2px 2px #444;
+    }
+}
+
+@media screen and (max-width: 345px) {
+
+    #tomato {
+        width: 220px;
+        height: 160px;
+    }
+    #timeRemaining {
+        position:relative; 
+        top: -95px;
+        height: 40px;
+        font-size: 35px;
+        line-height: 45px;
+        text-shadow: 2px 2px #444;
+    }
+}
+
+div {
+    text-align: center;
+}
+
+a:hover, a:focus, a:active, a:visited, a:link {
+    text-decoration: none !important;
+}
+
+#pomodoro {
+    margin: 0 auto;
+}
+
+img {
+    width: 70%;
+    cursor: pointer;
 }
 
 body {

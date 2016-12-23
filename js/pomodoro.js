@@ -2,7 +2,6 @@ var pomodoro = (function () {
 
     var remainingSeconds,
         timerHandle,
-        secondsInOneMinute,
         RED = true,
         GREEN = false;
 
@@ -19,7 +18,6 @@ var pomodoro = (function () {
     function init() {
         $(function () {
             setEventHandlers();
-            secondsInOneMinute = ('#sec' === location.hash) ? 1 : 60;
         })
     };
 
@@ -33,7 +31,7 @@ var pomodoro = (function () {
 
         setTomatoColor(RED);
 
-        remainingSeconds = (isNaN(pomodoroMinutes) ? 0 : pomodoroMinutes) * secondsInOneMinute;
+        remainingSeconds = (isNaN(pomodoroMinutes) ? 0 : pomodoroMinutes) * ('#debug' === location.hash ? 1 : 60);
 
         if (timerHandle) {
             clearTimeout(timerHandle);
@@ -41,7 +39,7 @@ var pomodoro = (function () {
 
         $.when(runTimer())
         .then(function () {
-            remainingSeconds = (isNaN(breakMinutes) ? 0 : breakMinutes) * secondsInOneMinute;
+            remainingSeconds = (isNaN(breakMinutes) ? 0 : breakMinutes) * ('#debug' === location.hash ? 1 : 60);
             setTomatoColor(GREEN);
 
             return runTimer();
