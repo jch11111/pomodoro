@@ -9,9 +9,7 @@ input {
 }
 
 @media screen and (max-width: 374px) {
-    body {
-        font-size: 21px;
-    }
+    
     input {
         width: 60px;
     }   
@@ -80,6 +78,9 @@ input {
         font-size: 35px;
         line-height: 45px;
         text-shadow: 2px 2px #444;
+    }
+    .container {
+        width: 100%;
     }
 }
 
